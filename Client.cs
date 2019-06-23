@@ -7,17 +7,17 @@ using static Api;
 
 namespace CreditsCSAPIDemo
 {
-    public class LookforDemo : IDisposable
+    public class Client : IDisposable
     {
         TSocket transport;
         TBinaryProtocol protocol;
-        Client client;
+        Api.Client api;
 
-        public LookforDemo(string ip, int port)
+        public Client(string ip, int port)
         {
             transport = new TSocket(ip, port);
             protocol = new TBinaryProtocol(transport);
-            client = new Client(protocol);
+            api = new Api.Client(protocol);
             transport.Open();
         }
 
@@ -28,12 +28,12 @@ namespace CreditsCSAPIDemo
 
         public string Hello()
         {
-            return client.Hello();
+            return api.Hello();
         }
 
         public void TreeTraverse(int index, int printLayer)
         {
-            var list = client.TreeChildren(index);
+            var list = api.TreeChildren(index);
             foreach (var item in list)
             {
                 Console.WriteLine($"{new string('\t', printLayer)} {item.Id}.{item.Name}");
@@ -43,7 +43,7 @@ namespace CreditsCSAPIDemo
 
         public void AdsByTreeIndex(int index, short rowsCount)
         {
-            var list = client.AdsByTree(index, rowsCount);
+            var list = api.AdsByTree(index, rowsCount);
             foreach (var ad in list)
             {
                 Console.WriteLine($"{ad.Id}\t{ad.Title.PadRight(40, ' ')}\t{ad.Price}\t{ad.AvitoTime}\t{ad.Address.PadRight(80, ' ')}\t{ad.OwnerPhone}");
