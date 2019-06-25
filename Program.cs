@@ -13,7 +13,7 @@ namespace CreditsCSAPIDemo
         {
             Console.WriteLine("Lookfor9 Simple Demo");
 
-            using (var demo = new Client("127.0.0.1", 9090))
+            using (var demo = new Client("92.255.199.79", 9090))
             {
                 Console.WriteLine("Hello:");
                 var hello = demo.Hello();
