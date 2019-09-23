@@ -54,5 +54,19 @@ namespace CreditsCSAPIDemo
                 Console.WriteLine($"{ad.OwnerPhone}\t{ad.OwnerName.PadRight(50, ' ')}\t{ad.PhoneInfo.PadRight(80, ' ')}");
             }
         }
+
+        public void AdsByTreeQuery(string value, short rowsCount)
+        {
+            var list = api.AdsByQuery(value, rowsCount);
+            foreach (var ad in list)
+            {
+                Console.WriteLine($"{ad.Id}\t{ad.Title.PadRight(40, ' ')}\t{ad.Price}\t{ad.AvitoTime}\t{ad.Address.PadRight(80, ' ')}\t{ad.OwnerPhone}");
+            }
+            Console.WriteLine("...");
+            foreach (var ad in list)
+            {
+                Console.WriteLine($"{ad.OwnerPhone}\t{ad.OwnerName.PadRight(50, ' ')}\t{ad.PhoneInfo.PadRight(80, ' ')}");
+            }
+        }
     }
 }

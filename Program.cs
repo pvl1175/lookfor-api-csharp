@@ -13,7 +13,7 @@ namespace CreditsCSAPIDemo
         {
             Console.WriteLine("Lookfor9 Simple Demo");
 
-            using (var demo = new Client("92.255.199.79", 9090))
+            using (var demo = new Client("127.0.0.1", 9075))
             {
                 Console.WriteLine("Hello:");
                 var hello = demo.Hello();
@@ -35,6 +35,13 @@ namespace CreditsCSAPIDemo
                 Console.WriteLine("Ads by tree (dacha) buy:");
                 demo.AdsByTreeIndex(4374, 10);
 
+                Console.WriteLine(new string('*', 100));
+                Console.WriteLine("Ads by query (Пушкина):");
+                demo.AdsByTreeQuery("Пушкина", 10);
+
+                Console.WriteLine(new string('*', 100));
+                Console.WriteLine("Ads by query (9196315):");
+                demo.AdsByTreeQuery("9196315", 10);
             }
 
             Console.WriteLine("Press [Enter] to exit...");
